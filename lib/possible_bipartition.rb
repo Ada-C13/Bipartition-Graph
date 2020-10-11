@@ -3,7 +3,7 @@ def possible_bipartition(dislikes)
   # https://en.wikipedia.org/wiki/Graph_coloring
   # assign bicolor red and blue : 0 as unvisited / 1 as red / -1 as blue
   color = Array.new(dislikes.length, 0)   
-  queue = []
+  queue = Queue.new
 
   v = 0
   while v < dislikes.length
@@ -15,7 +15,7 @@ def possible_bipartition(dislikes)
     
     # breadth-first search traversing the graph
     while !queue.empty?
-      i = queue.shift
+      i = queue.pop
 
       dislikes[i].each do |n|
         # if this node is not visited yet, assign opposite color and push to queu 
