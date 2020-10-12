@@ -4,12 +4,12 @@
 def possible_bipartition(dislikes) #[ [3, 6],[2, 5], [1, 3], [0, 2], [5], [1, 4], [0]]
   num_of_dogs = dislikes.length 
   stack = []
-  dog_groups = {} # distinguish groups as 1 and -1
+  dog_groups = {} # distinguish groups as true and false
 
   num_of_dogs.times do |i|
     if !dog_groups.has_key?(i)
       stack.push(i)
-      dog_groups[i] = 1
+      dog_groups[i] = true
     end
 
     until stack.empty?
@@ -23,7 +23,7 @@ def possible_bipartition(dislikes) #[ [3, 6],[2, 5], [1, 3], [0, 2], [5], [1, 4]
           stack.push(enemy)
 
           # assign a different group from the current dog since they have history of fighting
-          dog_groups[enemy] = dog_groups[current_dog] * -1 
+          dog_groups[enemy] = !dog_groups[current_dog]
         else 
 
           # if they are in the same group although they are enemies
@@ -42,3 +42,4 @@ end
 # https://www.interviewcake.com/concept/java/dfs
 # https://www.interviewcake.com/question/ruby/graph-coloring
 # https://leetcode.com/problems/possible-bipartition/
+# https://www.geeksforgeeks.org/check-if-a-given-graph-is-bipartite-using-dfs/
