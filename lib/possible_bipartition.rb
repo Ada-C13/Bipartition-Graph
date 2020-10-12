@@ -27,9 +27,7 @@ def possible_bipartition(dislikes) #[ [3, 6],[2, 5], [1, 3], [0, 2], [5], [1, 4]
         else 
 
           # if they are in the same group although they are enemies
-          if dog_groups[enemy] == dog_groups[current_dog] 
-            return false 
-          end
+          return false if dog_groups[enemy] == dog_groups[current_dog] 
         end 
       end
     end 
