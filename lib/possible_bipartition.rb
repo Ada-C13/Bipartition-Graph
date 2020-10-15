@@ -31,6 +31,7 @@ def possible_bipartition(dislikes)
           end
         end
       end
+      #else just continue 
     end
     i += 1
   end
