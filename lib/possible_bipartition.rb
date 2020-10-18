@@ -1,4 +1,7 @@
-###### in this assignment input dislikes is already an adjacency list
+###### using breadth-first search (BFS)
+###### in this assignment input dislikes is already an adjacency list (2D array)
+# Time Complexity: O(N+E) since we are visiting every node and checking each edge (dislike neighbors)
+# Space Complexity: O(N)?
 def possible_bipartition(dislikes)
   # https://en.wikipedia.org/wiki/Graph_coloring
   # assign bicolor red and blue : 0 as unvisited / 1 as red / -1 as blue
@@ -71,6 +74,7 @@ end
 
 
 ###### alternative solution using Depth-first search (DFS) Recursively
+# reference: https://leetcode.com/problems/possible-bipartition/discuss/158957/Java-DFS-solution
 # def possible_bipartition(dislikes)
 #   # assign bicolor red and blue : 0 as unvisited / 1 as red / -1 as blue
 #   colors = Array.new(dislikes.length, 0)   
