@@ -4,24 +4,26 @@
 # Space complexity: O(n)
 
 def possible_bipartition(dislikes)
-  u = []
-  v = []
-  dislikes.each do |dislike|
-    if dislike.length > 2
-      return false # if array has more than 2 elements, return false
-    elsif dislike.length == 2 # partition starts
-      if (u.include?(dislike[0]) && u.include?(dislike[1])) || (v.include?(dislike[0]) && v.include?(dislike[1]))
+  return true if dislikes.empty?
+
+  group1 = []
+  group2 = []
+  dislikes.each do |dogs|
+    if dogs.length > 2 # if array has more than 2 elements, return false
+      return false
+    elsif dogs.length == 2 # partition starts
+      if (group1.include?(dogs[0]) && group1.include?(dogs[1])) || (group2.include?(dogs[0]) && group2.include?(dogs[1]))
         return false
       end
 
-      if !u.include?(dislike[0]) && !v.include?(dislike[0]) && !u.include?(dislike[1]) && !v.include?(dislike[1])
-        u << dislike[0]
-        v << dislike[1]
+      if !group1.include?(dogs[0]) && !group2.include?(dogs[0]) && !group1.include?(dogs[1]) && !group2.include?(dogs[1])
+        group1 << dogs[0]
+        group2 << dogs[1]
       else
-        v << dislike[1] if u.include?(dislike[0]) && !v.include?(dislike[1])
-        u << dislike[1] if v.include?(dislike[0]) && !u.include?(dislike[1])
-        v << dislike[0] if u.include?(dislike[1]) && !v.include?(dislike[0])
-        u << dislike[0] if v.include?(dislike[1]) && !u.include?(dislike[0])
+        group2 << dogs[1] if group1.include?(dogs[0]) && !group2.include?(dogs[1])
+        group1 << dogs[1] if group2.include?(dogs[0]) && !group1.include?(dogs[1])
+        group2 << dogs[0] if group1.include?(dogs[1]) && !group2.include?(dogs[0])
+        group1 << dogs[0] if group2.include?(dogs[1]) && !group1.include?(dogs[0])
       end
     end
   end
